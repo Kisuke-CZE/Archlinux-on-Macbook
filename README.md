@@ -25,12 +25,12 @@ Before we proceed with destroying macOS and installing Linux, I suggest few thin
 
 When you are ready, boot ArchLinux installation flashdrive or some other linux live distro to destroy macOS partitions and create partitions for future Linux installation. For example my setup:
 
-|                                            SSD                                                  |
-|-----------|-------|-----------------------------------------------------------------------------|
-| /dev/sda1 |  1GB  | LABEL=BOOT, fs=fat32, ESP, future mountpoint = /boot                        |
-| /dev/sda2 |  17GB | LABEL=SWAP, fs=swap, future mountpoint = swap, will be used for hybernation |
-| /dev/sda3 |  173GB  | LABEL=ROOT, fs=ext4, future mountpoint = /                                  |
-| /dev/sda3 |  60GB | LABEL=BOOTCAMP, fs=ntfs, Windows partition                                  |
+| Partition |  Size  |                           Additional info                                   |
+|-----------|--------|-----------------------------------------------------------------------------|
+| /dev/sda1 |  1GB   | LABEL=BOOT, fs=fat32, ESP, future mountpoint = /boot                        |
+| /dev/sda2 |  17GB  | LABEL=SWAP, fs=swap, future mountpoint = swap, will be used for hybernation |
+| /dev/sda3 |  173GB | LABEL=ROOT, fs=ext4, future mountpoint = /                                  |
+| /dev/sda3 |  60GB  | LABEL=BOOTCAMP, fs=ntfs, Windows partition                                  |
 
 **Beware when creating partition for /boot. It mmust be set to type=ESP (EF00).**
 
