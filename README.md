@@ -124,7 +124,7 @@ Now we can start building our desktop system. Here is few tips.
 You probably do not want to run your entire desktop under `root` user. So we will create user in group admins who has right to run commands with sudo:
 
 Create user
-```bash
+```shell
 groupadd admins
 groupadd USERNAME
 useradd -m -g USERNAME -G admins -s /bin/bash USERNAME
@@ -289,7 +289,7 @@ I do not use bluetooth much. Only sometimes, so I hate default behavior which is
 
 Happily it is easy to use TLP to turn off bluetooth on boot and make it opt-in.
 Just edit TLP configuration in `/etc/default/tlp`. Find `DEVICES_TO_DISABLE_ON_STARTUP` section, on new line create (make sure there is no other uncommented `DEVICES_TO_DISABLE_ON_STARTUP`)
-```bash
+```shell
 DEVICES_TO_DISABLE_ON_STARTUP="bluetooth"
 ```
 
