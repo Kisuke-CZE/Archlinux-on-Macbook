@@ -1,7 +1,7 @@
 # Archlinux on Macbook Pro 11,1 (Mid 2014)
 
 ## Basic info
-I wrote this document, because I have some troubles when installing Archlinux to my Macbook Pro. I spent long time solving some crucial issues, googling, ... This might help other people to spend less time if they want to do same mad things as me. But it's primary purpose is I want to have some "TODO list" for Linux Installation on Macbook. I dont want to end up solving same issues near future (when I had to reinstall, or install another Macbook).
+I wrote this document, because I have some troubles when installing Archlinux to my Macbook Pro. I spent long time solving some crucial issues, googling, ... This might help other people to spend less time if they want to do same mad things as me. But it's primary purpose is I want to have some "TODO list" for Linux Installation on Macbook. I don't want to end up solving same issues near future (when I had to reinstall, or install another Macbook).
 
 This document is based on many other sources. My primary source when installing was [Macbook Pro ArchWiki article](https://wiki.archlinux.org/index.php/MacBookPro11,x), but this does not cover all issues issues I experienced. So other sources are various forums and bugreports with workarounds explained. Sadly I do not remember all my sources. But I will try to link all my known sources to in document.
 
