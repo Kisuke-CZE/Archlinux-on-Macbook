@@ -124,17 +124,28 @@ Now we can start building our desktop system. Here is few tips.
 You probably do not want to run your entire desktop under `root` user. So we will create user in group admins who has right to run commands with sudo:
 
 Create user
-<pre>
+```bash
 groupadd admins
-useradd -m -g admins -s /bin/bash USERNAME
+groupadd USERNAME
+useradd -m -g USERNAME -G admins -s /bin/bash USERNAME
 passwd USERNAME
-</pre>
+```
 
 Install sudo with `pacman -S sudo`.
 Setup sudo to enable users in group admins to run any command (with password) by calling `visudo` and adding this line to sudoers:
-<pre>
+```
 %admins      ALL=(ALL) ALL
-</pre>
+```
+
+Since ArchLinux is using [PolKit](https://wiki.archlinux.org/index.php/Polkit), don't forget to add polkit rule too.
+Just put this in `/etc/polkit-1/rules.d/40-admins.rules`:
+```
+polkit.addAdminRule(function(action, subject) {
+    return ["unix-group:admins"];
+});
+```
+
+
 
 Now logout and login with new user. We can now disable root login by `sudo passwd -l root` and replacing root's encrypted password in `/etc/shadow` with `!`
 
@@ -272,6 +283,15 @@ Then disable systemd-rfkill
 sudo systemctl mask systemd-rfkill.socket</pre>
 
 You can also change TLP configuration using file `/etc/default/tlp`.
+
+#### Using TLP for Bluetooth opt-in after boot
+I do not use bluetooth much. Only sometimes, so I hate default behavior which is turning bluetooth on after every (re)boot.
+
+Happily it is easy to use TLP to turn off bluetooth on boot and make it opt-in.
+Just edit TLP configuration in `/etc/default/tlp`. Find `DEVICES_TO_DISABLE_ON_STARTUP` section, on new line create (make sure there is no other uncommented `DEVICES_TO_DISABLE_ON_STARTUP`)
+```bash
+DEVICES_TO_DISABLE_ON_STARTUP="bluetooth"
+```
 
 ### Getting Windows to work
 As I've mentioned, I had Windows 10 installed using Bootcamp (just for few games, to be able to have some fun). Infortunately when I removed macOS, I could not boot to Windows anymore.
